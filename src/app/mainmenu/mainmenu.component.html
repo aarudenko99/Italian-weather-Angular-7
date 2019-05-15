@@ -1,0 +1,27 @@
+  <div>
+    <div>
+      <div style="padding-left: 0; padding-top: 3px;" class="col-xs-5 col-md-9">
+        <img class="hidden-xs" src="./account/resources/loghi/logo_meteodrome.png" style="height:50px" />
+        <img class="visible-xs-inline-block" src="./account/resources/loghi/logo_meteodrome2.png" style="height:50px" />
+      </div>
+      <div class="col-xs-7 col-md-3">
+        <div class="input-group MainSearchGroup">
+          <input id="typeahead-basic" type="text" 
+                class="form-control MainSearchInput" 
+                [class.is-invalid]="searchFailed" 
+                [(ngModel)]="model" 
+                [ngbTypeahead]="search" 
+                placeholder="Località"
+          style="height: 43px;">
+          <span *ngIf="searching">searching...</span>
+          <!-- <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div> -->
+          <span class="input-group-btn">
+            <button (click)="GoSearch()" class="btn btn-default" type="button" style="height: 43px;">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </span>
+
+        </div><!-- /input-group --> 
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->

@@ -1,0 +1,148 @@
+
+.CitiesDetailsHeaderRow {
+  background-color: #337ab7 !important;
+  color: white !important;
+}
+
+.MapViewScreenContainer {
+  padding: 0px;
+}
+ 
+@media(max-width:767px) {
+  .RegionCityCellValue {
+    font-size: 9pt;
+    word-wrap: break-word;
+  }
+}
+
+@media(min-width:768px) {
+  .RegionCityCellValue {
+    font-size: 12pt;
+    word-wrap: break-word;
+  }
+}
+#mapWrapper{
+  width: 100%;
+  height: calc(100% - 187px);
+  position: relative;
+}
+#mapStats{
+  position: absolute;
+  /* bottom: 20px; 
+  left: 10px; */
+  top:9px;
+  right:9px;
+  padding: 15px;
+  border-radius: 2px;
+  background-color: rgb(255, 255, 255);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  color: #666;
+}
+#mapStats h3{
+  font-size: 1.3rem;
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+}
+#mapStats hr{
+  margin: 10px 0;
+  border-top: 1px solid #dadada;
+}
+#mapStats p{
+  font-size: 1.6rem;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+}
+.statisticsView{
+  position: absolute;
+  width: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: calc(100% - 187px);
+  padding: 15px;
+}
+.citiesView {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: calc(100% - 187px);
+}
+.citiesView .typeButtons{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 15px;
+}
+.citiesView .regionList{
+  position: absolute;
+  width: 100%;
+  top: 70px;
+  bottom: 0px;
+  overflow: auto;
+}
+
+#add_f_location{
+  position: absolute;
+  z-index: 1;
+  right: 60px;
+  bottom: 24px;
+}
+
+#myModal{
+  z-index: 2;
+}
+
+#vip_location{
+  margin-left: 10px;
+}
+
+#vip_location_header{
+  padding: 10px;
+  /* margin-left: 10px; */
+}
+
+#vip_location_header_btn{
+  margin-top: 10px;
+  float: right;
+}
+
+.boundary_line{
+  margin-top: 20px;
+  height: 1px;
+  widows: 100%;
+  background-color: #cecece;
+}
+
+#back_to_map{
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+}
+
+#back_to_map img:hover{
+  transition: all 0.2s;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+#location_content{
+  padding: 10px 10px 0px 10px;
+}
+
+.list_section{
+  padding: 0px 5px 0px 5px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#vip_location_body .row{
+  padding: 10px;
+}
+
+.list_location{
+  height: 500px;
+  overflow: scroll;
+}

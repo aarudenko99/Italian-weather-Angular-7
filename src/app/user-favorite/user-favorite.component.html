@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="locationsView">
+        <div class="row list_location">
+          <div class="col-sm-4 space_section"></div>
+          <div class="col-sm-4 list_section">
+            <div id="vip_location">
+              <div id="vip_location_header">
+                <H3>Choose your country...</H3>
+                <form #userlogin = "ngForm" (ngSubmit) = "add_list(userlogin.value)" >
+                  <input list="browsers" class="form-control" value="{{item_text}}" name="browser" id="myText" ngModel>
+                  <datalist id="browsers">
+                    <ng-container *ngFor="let group of getList.localities">
+                      <option value="{{group}}" class="form-control" style="width: 500px">📌</option>
+                    </ng-container>
+                  </datalist>
+                  <input type="submit" class="btn btn-info col-sm-12" id="vip_location_header_btn" value="ADD CLICK">
+                </form>
+              </div>
+              <div id="vip_location_body">
+                <div class="row">
+                  <div class="col-sm-12 boundary_line"></div>
+                </div>
+                <div id="location_content">
+                    <ng-container *ngFor="let item of cart">
+                          <div class="alert alert-info alert-dismissible fade in" (click)="weatherItem(item)">
+                            <a href="#" (click)="removeItem(item)" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            💛 <strong>{{item}} </strong> has been chosen your favorite city successfully.
+                          </div>
+                    </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 space_section"></div>
+        </div>
+      </div>
+</div>

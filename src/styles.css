@@ -1,0 +1,134 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.ui-widget-content {
+  width: 17em;
+  padding: .2em;
+  border: 1px solid #d4d4d4;
+  background: #fafafa;
+  color: #081c22;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Segoe UI Symbol";
+  font-size: 1em;
+  box-sizing: border-box;
+}
+.ui-datepicker .ui-datepicker-header {
+  position: relative;
+  padding: .2em 0;
+}
+.ui-helper-clearfix {
+  zoom: 1;
+}
+.ui-widget, .ui-widget * {
+  box-sizing: border-box;
+}
+.ui-corner-all {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+.ui-widget-header {
+  border: 1px solid #2790b0;
+  background-color: #337ab7;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.ui-datepicker .ui-datepicker-header a {
+  color: #ffffff;
+}
+.ui-datepicker .ui-datepicker-prev {
+  left: .125em;
+}
+.ui-datepicker .ui-datepicker-next, .ui-datepicker .ui-datepicker-prev {
+  position: absolute;
+  top: .125em;
+  width: 1.8em;
+  height: 1.8em;
+}
+.ui-datepicker .ui-datepicker-next {
+  right: .125em;
+}
+
+.ui-widget-header a {
+  color: #ffffff;
+}
+.ui-widget-content a {
+  color: #081c22;
+}
+.ui-widget, .ui-widget * {
+  box-sizing: border-box;
+}
+.ui-corner-all {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.ui-datepicker .ui-datepicker-title {
+  margin: 0 2.3em;
+  line-height: 1.8em;
+  text-align: center;
+}
+.ui-datepicker table {
+  width: 100%;
+  font-size: .9em;
+  border-collapse: collapse;
+  margin: 0 0 .4em;
+}
+.ui-state-default {
+  border: 1px solid #d4d4d4;
+  background: #fafafa;
+  color: #081c22;
+}
+
+
+
+
+.ui-datepicker th {
+  padding: .7em .3em;
+  text-align: center;
+  font-weight: 700;
+  border: 0;
+}
+.ui-datepicker td a, .ui-datepicker td span {
+  display: block;
+  padding: .2em;
+  text-align: right;
+  text-decoration: none;
+}
+
+.ui-datepicker-current-day a {
+  background-color: #337ab7 !important;
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+.ui-state-disabled, .ui-state-disabled a {
+  cursor: default!important;
+  background-color: darkgray !important;
+  color: gray !important;
+}
+
+
+.ui-state-highlight {
+  background-color: #72BA55;
+  border-color: #4cae4c;
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  background-color: #fff;
+}
+.dropdown-item {
+  background-color: #fff;
+  color: gray;
+}
+.dropdown-item.active {
+  background-color: #72BA55 !important;
+  color: white;
+  font-weight: bolder;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

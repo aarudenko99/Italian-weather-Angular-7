@@ -1,0 +1,17 @@
+.CityTitleContainer {
+  background-color: #00A4D6;
+  border-top: 1px solid #1991c3;
+  color: white;
+  padding: 12px;
+}
+  .CityMobileTitleContainer {
+    font-size: 20pt;
+    line-height: 20pt;
+  }
+ .CityMobileSubTitleContainer {
+    font-size: 12pt;
+    line-height: 12pt;
+  }
+
+
+

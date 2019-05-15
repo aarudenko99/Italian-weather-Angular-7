@@ -1,0 +1,45 @@
+
+<div class="timeline-calendar">
+    <div *ngIf="enableCalendar">
+        <p-calendar [(ngModel)]="emissionDate" [minDate]="minDateValue" [maxDate]="maxDateValue" [inline]="true"></p-calendar>
+    </div>
+</div>
+<div class="timeline">
+    
+    <div class="lt_emission">
+        <div *ngIf="!enableCalendar" (click)="ShowCalendar()">
+            <label class="EmissionMobileLabel">EMISSIONE DI</label>
+            <label class="EmissionMobileValue">
+                <i class="glyphicon glyphicon-calendar"></i>
+                {{emissionLabel}}
+            </label>
+        </div>
+        <div *ngIf="enableCalendar" (click)="HideCalendar()">
+            <label class="EmissionMobileLabel2">CHIUDI</label>
+        </div>
+    </div>
+    <div class="lt_back">
+        <div class="ScrollTimeline" (click)="BackWardForecast()" >
+            <i class="glyphicon glyphicon-backward"></i>
+        </div>
+    </div>
+    <div class="lt_forecast">
+        <div id="ScrollItem" [class]="'table-responsive '+GetScrollStyle()">
+            <table class="table">
+                <tr>
+                    <td *ngFor="let item of barDays" 
+                        [class]="item.buttonStyle+' MobileDateCell'" 
+                        (click)="UpdateForecastsDeadline(item)">
+                        <label class="MobileWeekDayLabel">{{MobileWeekDay(item.label)}}</label>
+                        <label class="MobileDayLabel">{{MobileDay(item.label)}}</label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="lt_forward">
+        <div class=" ScrollTimeline" (click)="ForWardForecast()"  >
+            <i class="glyphicon glyphicon-forward"></i>
+        </div>
+    </div>
+</div>

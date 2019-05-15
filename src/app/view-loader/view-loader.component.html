@@ -1,0 +1,123 @@
+<body [ngClass]= 
+"{ 'view-ranking': ViewMode.View=='rank', 
+   'view-map': ViewMode.View=='home', 
+   'view-map': ViewMode.View=='home',
+   'view-stats': ViewMode.View=='homeloc' }">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2DCDLV"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="loader" [ngClass]="{'loading': true, 'show': data==null}">Loading&#8230;</div> 
+
+  <!-- <header [ngClass]="{'embedded': ViewMode.View === 'map' || locExpand === true }"> -->
+  <header [ngClass]="{'embedded': locExpand === true }">
+ 
+    <app-mainmenu
+      *ngIf = "showHeader()"
+      [eventchanger]="eventchanger" 
+      [globalParameters] = "data.globalParameters">
+    </app-mainmenu> 
+
+  </header>
+
+  <section id="page-ranking" [ngClass]="{'embedded': ViewMode.View === 'rank'}"> 
+    
+      <rankinglist
+        *ngIf = "ViewMode.View === 'rank'"
+        [eventchanger]="eventchanger"
+        [globalParameters]="data.globalParameters"
+        [ranking]="data.ranking"
+        [labels]="data.ranking?.labels"
+        >
+      </rankinglist>
+
+  </section> 
+
+  <section id="page-favorite" [ngClass]="{'embedded': ViewMode.View === 'favorite'}"> 
+    
+    <app-timelinebar 
+      *ngIf = "showMaps()"
+      [eventchanger]="eventchanger"
+      [forecastIssueDate]="data.globalParameters?.forecastIssueDate"
+      [forecastDeadLineDate]="data.globalParameters?.forecastDeadLineDate"
+      [forwardDays]="data.timeLineBars?.forwardDays">
+    </app-timelinebar> 
+
+      <app-user-favorite *ngIf = "ViewMode.View === 'favorite'" [eventchanger]="eventchanger" 
+      [globalParameters] = "data.globalParameters"></app-user-favorite>
+
+  </section> 
+
+  <section id="page-map" [ngClass]="{'embedded': ViewMode.View === 'map'}" >
+
+    <app-timelinebar 
+      *ngIf = "showMaps()"
+      [eventchanger]="eventchanger"
+      [forecastIssueDate]="data.globalParameters?.forecastIssueDate"
+      [forecastDeadLineDate]="data.globalParameters?.forecastDeadLineDate"
+      [forwardDays]="data.timeLineBars?.forwardDays">
+    </app-timelinebar> 
+  
+    <view-map #viewMap 
+      *ngIf = "showMaps()"
+      [eventchanger]="eventchanger"
+      [maps]="data.maps"
+      [labelsformapscore]="data.maps?.labelsForMapScore"
+      [labelsforforecasts]="data.maps?.labelsForForecasts"
+      [globalParameters]="data.globalParameters"
+      [selectedView]="mapViewOption">
+    </view-map>
+
+  </section>
+
+  <section id="page-stats" [ngClass]="{'expanded': locExpand === true }">
+
+    <div id="page-stats-timeline" [ngClass]="{ 'expanded': locExpand === true }" >
+      <app-timelinebar 
+        *ngIf = "showLoc() && locExpand === false"
+        [eventchanger]="eventchanger"
+        [forecastIssueDate]="data.globalParameters?.forecastIssueDate"
+        [forecastDeadLineDate]="data.globalParameters?.forecastDeadLineDate"
+        [forwardDays]="data.timeLineBars?.forwardDays">
+      </app-timelinebar>
+    </div>
+
+    <view-bar-locality 
+      *ngIf = "showLoc()"
+      [eventchanger]="eventchanger"
+      [locName] = "get_Locality_Name()" 
+      [maturityDateLabel] = "get_Locality_MaturityDateArr()">
+    </view-bar-locality>
+
+    <view-locality #viewLocality 
+      *ngIf = "showLoc()"
+      [eventchanger]="eventchanger"
+      [localityForecasts]="data.localityForecasts">
+    </view-locality>
+
+  </section>
+
+
+  <footer [ngClass]="{'embedded': ViewMode.View === 'map' || locExpand === true }">
+    <ul *ngIf = "showFooter()">
+      <li id="show-map">
+        <a [attr.href]="getHomeUrl()" class="btn2"><img src="./account/resources/icons/icon-map.png" style="height:100%;margin: 0 auto;"></a>
+        <!-- <a [attr.href]="getHomeUrl()" class="btn2"><i class="fa fa-map-o" style="font-size: 32px; color: #ffffff; padding: 5px;"></i></a> -->
+      </li>
+      <li id="show-blog">
+        <a href="http://www.meteodrome.it/" target="_blank" class="btn3"><img src="./account/resources/icons/icon-blog.png" style="height:100%;margin: 0 auto;"></a>
+      </li>
+      <li id="show-ranking">
+        <a (click)="launchView_rank()" class="btn1"><img src="./account/resources/icons/icon-podium.png" style="height:100%;margin: 0 auto;"></a>
+      </li>
+      <li (click)="launchView_favorite()" id="show-favorite">
+        <a class="btn4"><i class="fa fa-heart-o" style="font-size:36px; color: #ffffff; padding: 3px;"></i></a>
+      </li>
+    </ul>
+  </footer>
+
+</body>
+
+<!-- <img src="./account/resources/icons/img_507455.png" style="height:100%;margin: 0 auto;padding-top: 4px;padding-bottom: 8px;"> -->

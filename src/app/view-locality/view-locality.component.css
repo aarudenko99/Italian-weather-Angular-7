@@ -1,0 +1,162 @@
+.ioslist-wrapper{
+	overflow: auto;
+	overflow-x: hidden;
+	position: absolute;
+	/*width: 100%;*/
+	width: calc(100% + 15px);
+	height: calc(100% - 60px);
+}
+.ioslist-group-container {
+	margin: 0;
+	min-height: 1px;
+	overflow: hidden;
+	padding: 64px 0 0 0;
+	position: relative;
+}
+.ioslist-group-header, .ioslist-fake-header {
+	background: #324a56;
+	/* border-bottom: 1px solid #989EA4;
+	border-top: 1px solid #717D85; */
+	color: #FFF;
+	font: normal 18px/21px 'Roboto', sans-serif;
+	margin: 0;
+	padding: 2px 0 0 12px;
+	position: absolute;
+	height: 63px;
+	width: 100%;
+}
+.ioslist-group-header table,
+.ioslist-fake-header table{
+	height: 100% !important;
+}
+.ioslist-group-header {
+	bottom: auto;
+	min-height: 1px;
+	top: 0;
+}
+.ioslist-fake-header {
+	z-index: 1000;
+}
+
+.ioslist-fake-header.ioslist-hidden {
+	visibility: hidden;
+}
+.ioslist-group-container.ioslist-animated .ioslist-group-header {
+	bottom: 0;
+	top: auto;
+	z-index: 1;
+}
+
+/* Demo Styling */
+.ioslist ul, .ioslist dl {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.ioslist ul.forecast-results td{
+	vertical-align: middle;
+	font-size: 1.3rem;
+	position: relative;
+}
+/*.ioslist ul.forecast-results td div{
+	line-height: 2rem;
+}*/
+
+.ioslist ul.forecast-results td div strong{
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+}
+.ioslist ul.forecast-results td div strong.value{
+	height: 40px;
+	line-height: 40px;
+	display: block;
+	width: 100%;
+	background-color: rgba(0,0,0,.1);
+	font-size: 2.4rem;
+	position: absolute;
+	top: 0;
+}
+
+.ioslist ul.forecast-results td div .icon-perc{
+	font-size: 1.3rem;
+	display: block;
+	font-weight: bold;
+	position: absolute;
+	bottom: 3px;
+	width: 100%;
+}
+.ioslist ul.forecast-results td div .perc{
+	font-size: 1.3rem;
+	display: block;
+	font-weight: bold;
+	position: absolute;
+	bottom: 3px;
+	width: 100%;
+}
+
+/* .ioslist ul.forecast-results td div .icon-perc{
+	font-size: 2rem;
+	display: block;
+	font-weight: bold;
+}
+.ioslist ul.forecast-results td div .perc{
+	font-size: 1.2rem;
+	display: block;
+} */
+
+.ioslist li, .ioslist dt {
+    font: normal 20px/1 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+.ioslist dt {
+	padding: 0 0 0 12px;
+}
+
+.ioslist li + li, .ioslist dd + dt {
+    /*border-top: 1px solid #fff;*/
+	border-top: 1px solid #334a57;
+}
+
+.ioslist dd {
+    padding: 0 12px;
+}
+
+/*[data-ios="true"] .ioslist-group-header,
+[data-ios="true"] .ioslist-fake-header {
+	/*width: 288px; /*scrollbars aren't visible in iOS devices, so make the headers wider *!/*!/
+	width: calc(100% + 15px);
+}*/
+.ioslist .previsione-corretta{
+	font-size: 1.4rem;
+}
+.top-rating{
+	position: relative;
+}
+	.top-rating-icon{
+		display: none;
+	}
+	.top-rating .top-rating-icon{
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		display: block;
+		width: 20px;
+	}
+	@media all and (max-width: 520px) {
+	    .top-rating .icon{
+	    	text-align: left;
+	    	padding-left: 5px;
+	    }
+		.top-rating > div{
+			text-align: left;
+			padding-left: 0;
+		}
+		.top-rating > div strong,
+		.top-rating > div span{
+			padding-left: 3px;
+		}
+	}
+	

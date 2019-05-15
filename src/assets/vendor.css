@@ -1,0 +1,452 @@
+﻿body {
+}
+
+.smallmapbuttonselected {
+    
+    background-color: #337ab7;
+    border-color: #2e6da4;
+
+}
+.smallmapbuttonselected:hover {
+    
+    background-color: #337ab7 !important;
+    border-color: #2e6da4 !important;
+
+}
+
+.BtnTimeLineDayContainer {
+    text-align: center;
+}
+
+.whitebg {
+    background-color: white !important;
+}
+
+.blackbg {
+    background-color: white !important;
+}
+
+
+.BtnRefreshUserButton {
+    font-size: 10pt !important;
+    width: 100%;
+}
+
+.CurrentUserTitle {
+    background-color: #2e6da4;
+    border-radius: 0px;
+    margin-bottom: 2px;
+    height: 30px;
+    padding-top: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.TimeLineIconBar {
+    background-color: transparent;
+}
+.TimeLineIconBarImage {
+    background-color: transparent;
+}
+
+.MapDetailsCitiesSelector {
+    -ms-border-radius: 0px !important;
+    border-radius: 0px !important;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+
+@media(max-width:767px) {
+
+    
+
+    .SmallDateButtonContainer {
+        background-color: whitesmoke
+    }
+
+    .MapDetailsCitiesButtons {
+    }
+    .MapDetailsCitiesButton {
+        height: 50px;
+        vertical-align: middle;
+        padding-top: 12px;
+        font-size: 18pt;
+        border-radius: 0px;
+        margin-top: 2px;
+        width: 32%;
+        margin-bottom: 2px;
+        margin-left: 1px;
+    }
+
+    .checkPastForecastsLbl {
+        font-size: 8pt;        
+    }
+    .BtnTimeLineDay {
+        font-size: 7pt;
+        max-width: 82px;
+        height: 40px;
+        white-space: normal;
+    }
+    .maturityDataLabel {
+        font-size: 8pt;
+    }
+
+
+    .smallmapbutton {
+
+        height: 80px;
+ 
+        background-repeat: no-repeat;
+        background-position: center;
+        background-clip: padding-box;
+        background-size: 60px;
+
+        font-size: 20pt;
+        font-weight: bolder;
+    }
+
+
+    .SmallDateButton {
+        font-size: 8pt !important;
+        margin-right: 1px;
+        margin-left: 1px;
+        margin-top: 1px;
+        width: 76px;
+        height: 30px;
+        font-size: 10pt;
+        -ms-border-radius: 0px;
+        border-radius: 0px;
+        padding: 0px !important;
+    }
+
+
+}
+@media(min-width:768px) {
+
+    .CurrentUserTitle {
+        background-color: #2e6da4;
+        border-radius: 0px;
+        margin-bottom: 2px;
+        height: 40px;
+        font-size: 12pt;
+        padding-top: 8px;
+        font-weight: bold;
+        color: white;
+    }
+
+
+    .BtnRefreshUserButton {
+        font-size: 11pt !important;
+        width: 200px;
+    }
+
+    .SmallDateButtonContainer {
+        padding-left: 27px;
+        background-color: whitesmoke;
+    }
+
+    .MapDetailsCitiesButton {
+        height: 50px;
+        vertical-align: middle;
+        padding-top: 12px;
+        font-size: 18pt;
+        border-radius: 0px;
+        margin-top: 2px;
+        width: 32%;
+        margin-bottom: 2px;
+        margin-left: 4px;
+    }
+
+
+    .BtnTimeLineDay {
+        font-size: 10pt;
+        width: 95px;
+        height: 50px;
+    }
+
+
+    .smallmapbutton {
+
+        height: 150px;
+ 
+        background-repeat: no-repeat;
+        background-position: center;
+        background-clip: padding-box;
+        background-size: 100px;
+
+        font-size: 20pt;
+        font-weight: bolder;
+    }
+
+    .refreshDeadLineBarPagination {
+        margin: 19px;
+        margin-bottom: 0px;
+    }
+
+    .refreshDeadLineBarDate {
+        display: inline-block;
+        width: 45px;
+        height: 55px;
+        font-size: 10pt;
+        text-align: center;
+    }
+
+    .refreshDeadLineBarDate strong {
+        font-size: 12pt;
+    }
+
+    .refreshDeadLineBarDate span {
+        font-size: 21pt;
+    }
+
+    .SmallDateButton {
+        font-size: 8pt !important;
+        margin-right: 1px;
+        margin-left: 1px;
+        margin-top: 1px;
+        width: 73px;
+        height: 40px;
+        font-size: 10pt;
+        -ms-border-radius: 0px;
+        border-radius: 0px;
+        padding: 0px!important;
+    }
+}
+
+
+@media(min-width:992px) {
+
+   
+
+    .MapDetailsCitiesButton {
+        height: 50px;
+        vertical-align: middle;
+        padding-top: 12px;
+        font-size: 18pt;
+        border-radius: 0px;
+        margin-top: 2px;
+        width: 32%;
+        margin-bottom: 2px;
+        margin-left: 6px;
+    }
+
+    .SmallDateButtonContainer {
+        padding-left: 22px;
+        background-color: whitesmoke;
+    }
+    .SmallDateButton {
+        font-size: 11pt !important;
+        margin-right: 1px;
+        margin-left: 1px;
+        margin-top: 1px;
+        width: 113px;
+        height: 40px;
+        font-size: 10pt;
+        -ms-border-radius: 0px;
+        border-radius: 0px;
+    }
+
+
+    .smallmapbutton {
+
+        height: 200px;
+ 
+        background-repeat: no-repeat;
+        background-position: center;
+        background-clip: padding-box;
+        background-size: 150px;
+
+        font-size: 20pt;
+        font-weight: bolder;
+    }
+
+
+    .refreshDeadLineBarPagination {
+        margin: 19px;
+        margin-bottom: 0px;
+    }
+
+    .refreshDeadLineBarDate {
+        display: inline-block;
+        width: 60px;
+        height: 75px;
+        font-size: 10pt;
+        text-align: center;
+    }
+
+    .refreshDeadLineBarDate strong {
+        font-size: 20pt;
+    }
+
+    .refreshDeadLineBarDate span {
+        font-size: 29pt;
+    }
+
+
+}
+
+
+
+/* DESKTOP MAXI */
+@media(min-width:1200px) {
+
+    .SmallDateButtonContainer {
+        padding-left: 23px;
+        background-color: whitesmoke;
+    }
+    .SmallDateButton {
+        font-size: 15pt !important;
+        margin-right: 1px;
+        margin-left: 1px;
+        margin-top: 1px;
+        width: 165px;
+        height: 51px;
+        font-size: 10pt;
+        -ms-border-radius: 0px;
+        border-radius: 0px;
+        padding: 0px!important;
+    }
+
+    .MapDetailsCitiesButton {
+        height: 50px;
+        vertical-align: middle;
+        padding-top: 12px;
+        font-size: 18pt;
+        border-radius: 0px;
+        margin-top: 2px;
+        width: 32%;
+        margin-bottom: 2px;
+        margin-left: 8px;
+    }
+
+
+    .smallmapbutton {
+
+        height: 240px;
+ 
+        background-repeat: no-repeat;
+        background-position: center;
+        background-clip: padding-box;
+        background-size: 180px;
+
+        font-size: 20pt;
+        font-weight: bolder;
+    }
+
+    .refreshDeadLineBarPagination {
+        margin: 14px;
+        margin-bottom: 0px;
+    }
+
+    .refreshDeadLineBarDate {
+        display: inline-block;
+        width: 75px;
+        height: 75px;
+        font-size: 10pt;
+        text-align: center;
+    }
+
+    .refreshDeadLineBarDate strong {
+        font-size: 20pt;
+    }
+
+    .refreshDeadLineBarDate span {
+        font-size: 29pt;
+    }
+
+
+}
+
+
+.CityDetailLocalityTitle {
+    margin-top: 12px;
+    font-size: 24pt;
+}
+.CityDetailGroupTitle {
+    background-color: #337ab7;
+    color: white;
+    text-align: center;
+}
+
+.BackToMapButton {
+    height: 60px;
+}
+
+.cityDetailViewBakButtonCell {
+    padding: 1px;
+    width: 82px;
+}
+
+.cityDetailViewWeatherImgCell {
+    padding-top: 10px !important;
+}
+
+.cityDetailViewPanelHeading {
+    padding: 1px;
+    height: 80px;
+}
+
+.cityDetailViewLabelValueType {
+    background-color: #AAAAAA;
+    color: white;
+    text-align: center;
+    padding-top: 15px !important;
+}
+
+.CellIconForCityDetailView {
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    font-size: 16pt;
+}
+
+.CellLabelMobileForCityDetailView {
+    font-size: 8pt;
+    text-align: center;
+    font-weight: bold;
+}
+
+.CellValueMobileForCityDetailView {
+    font-size: 8pt;
+    text-align: center;
+}
+
+.MobileCityDetailViewTable {
+    width: 300px;
+    margin: auto;
+    margin-top: 80px;
+    background-color: whitesmoke;
+}
+
+.CellHeaderPivotForCityDetailView {
+
+}
+
+.CellHeaderForCityDetailView {
+    width: 60px;
+    height: 30px;
+    padding: 0px !important;
+}
+
+.cityDetailViewValue {
+    text-align: center !important;
+}
+
+
+
+
+.SmallHourButton {
+    font-size: 15pt;
+    margin-right: 1px;
+    margin-left: 1px;
+    margin-top: 1px;
+    -ms-border-radius: 0px;
+    border-radius: 0px;
+}
+
+
+
+
+

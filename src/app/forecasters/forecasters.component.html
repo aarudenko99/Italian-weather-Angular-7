@@ -1,0 +1,25 @@
+<div style="width: 50%; min-width: 170px; display: inline-block;">
+  <select style="width: 100%;
+    height: 34px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background-color: #fff;
+    color: #1991c3;" (change)="onChange($event.target.value)">
+    <option *ngFor="let itm of items" [value]="itm.userId" [selected]="itm.selected" >
+        {{ itm.username }}
+    </option>
+  </select>
+</div>
+ 
+ 
+
+<!-- 
+ 
+   <ng-select  [items]="items"
+              [markFirst]="false"
+              [searchable]="false"
+              [(ngModel)]="model" 
+              placeholder="Nessun previsore selezionato">
+  </ng-select>
+
+</div> -->

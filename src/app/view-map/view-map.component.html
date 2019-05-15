@@ -1,0 +1,328 @@
+<div class="row">
+  <div class="col-xs-12">
+     <!-- RANGE SLIDER PER SELEZIONE ORARIO PREVISIONI -->
+    <view-stepper (onChange)='selectHour($event)' [barData]="_maps.hoursBarInfo" ></view-stepper>
+    <!-- BARRA BLUE SOPRA LA MAPPA  con  MAP/DETAILS/CITIES Buttons-->
+    <div *ngIf="selectedView!='City'" class="TopMapViewBar">
+      <div class="CurrentUserTitle">  
+        <div>
+          <forecasters id="usersList"  (Selected)="selectUser($event)" [eventchanger]="eventchanger" [uId]="globalParameters?.uId"></forecasters>
+        </div>
+      </div>
+      <div class="MapDetailsCitiesContainer" aria-label="...">
+        <div class="btn-group" role="group">
+          <button (click)="viewMap()"  [class]="BtnSelectedClass('Map')" >
+            <i class="fa fa-globe"></i>
+            <span class="hidden-sm hidden-xs MapDetailsCitiesButtonLabel">Mappa</span>
+          </button>
+          <button *ngIf="ViewStatisticsButton" (click)="viewStatistics()"  [class]="BtnSelectedClass('Statistics')" >
+            <i class="fa fa-bar-chart-o"></i>
+            <span class="hidden-sm hidden-xs MapDetailsCitiesButtonLabel">Statistiche</span>
+          </button>
+          <button (click)="viewCities()"  [class]="BtnSelectedClass('Cities')" >
+            <i class="fa fa-map-marker"></i>
+            <span class="hidden-sm hidden-xs MapDetailsCitiesButtonLabel">Città</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+    <div id="mapWrapper" [hidden]="selectedView!='Map'">
+        <div id="add_f_location">
+          <button class="btn btn-warning btn-lg" (click)="viewLocations()"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+        </div>
+        
+      <!-- GOOGLE MAP -->
+      <div #gmap style="width:100%;height:100%"></div>
+ 
+      <!-- PANNELLO DELLE STATISTICHE IN ALTO A DESTRA DELLA MAPPA -->
+      <!-- <div id="mapStats" *ngIf="MapStatistics" 
+          [style.background-color]="MapStatisticsBackgroundColor" [style.color]="MapStatisticsForegroundColor">
+        <h3>{{Lb1}}</h3>
+        <p>{{Vl1}}</p> -->
+      <!-- <hr>
+        <h3>{{Lb2}}</h3>
+        <p>{{Vl2}}</p>
+      -->
+      <!--  
+         DA TENERE!!! SONO I PANNELLI COL GIORNO DI SCADENZA IN ALTO A DESTRA DELLA MAPPA 
+         <rect *ngIf="MapCalendar"  [attr.x]="MapCalendarX" y="3" rx="5" ry="5" [attr.width]="MapCalendarW" height="100" style="fill:#337ab7;stroke:gray;stroke-width:1;opacity:0.9" />
+        <text *ngIf="MapCalendar" font-family="Verdana"   [attr.x]="MapCalendarX" y="20" style="fill:black;">
+          <tspan text-anchor="middle" [attr.font-size]="LegendCalendarFontSize1" [attr.x]="MapCalendarX+(MapCalendarW/2)" y="30" style="fill:white;">{{weekday}}</tspan>
+          <tspan text-anchor="middle" [attr.font-size]="LegendCalendarFontSize2" [attr.x]="MapCalendarX+(MapCalendarW/2)" y="70" style="fill:white;">{{dayofmonth}}</tspan>
+          <tspan text-anchor="middle" [attr.font-size]="LegendCalendarFontSize1" [attr.x]="MapCalendarX+(MapCalendarW/2)" y="90" style="fill:white;">{{hour}}</tspan>
+        </text>  
+      -->
+      <!-- </div> -->
+    </div>
+ 
+    <!--DETTAGLIO STATISTICHE: Cliccando sul pulsante centrale della barra blu appare il pannello  
+      statistiche che riassume le statistiche del previsore aggregate a tutte le località della 
+      mappa e riferite alla scadenza selezionata (Il pannello nasconde la mappa sottostante) -->
+      <div *ngIf="selectedView=='Location'" class="locationsView">
+        <div class="row list_location">
+          <div class="col-sm-4">
+
+
+
+          </div>
+          <div class="col-sm-4 list_section">
+            <div id="vip_location">
+              <div id="vip_location_header">
+                <H3>Choose your country...</H3>
+                <input type="text" class="form-control">
+                <button type="button" class="btn btn-info col-sm-12" id="vip_location_header_btn">ADD CLICK</button>
+                <div style="height: 10px;"></div>
+              </div>
+              <div id="vip_location_body">
+                <div class="row">
+                  <div class="col-sm-12 boundary_line"></div>
+                </div>
+                <div id="location_content">
+
+                  <ng-container *ngFor="let group of groupList?.groups">
+                    <ng-container *ngFor="let item of group?.items">
+                      <tr >
+                        <td class="RegionCityCellValue">
+                          <div class="alert alert-info alert-dismissible fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{item?.locName}} !</strong> Has been choose your favorite city successfully.
+                          </div>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </ng-container>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+        <div id="back_to_map" (click)="viewMap()">
+          <img src="../../account/resources/icons/blue-return-button-png-0.png" width="100px">
+        </div>
+      </div>
+
+      <div *ngIf="selectedView=='Statistics'" class="statisticsView">   
+          <div class="row">
+            <div class="col-xs-12" [style.height]="svgheight+'px'">
+
+              <!--Liv Accuratezza -->
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
+                  <label>
+                    {{labelsformapscore?.scoreOnMaxScoreLbl}}
+                  </label>
+                </div>
+                <div class="text-right col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                  <label>{{selMap.mapScore?.scoreOnMaxScore}}</label>
+                </div>
+                <div class="col-xs-12 colsm-12 col-md-6 col-lg-3">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-danger progress-bar-striped active" [style.width]="ProgressBar(1,selMap.mapScore?.scoreOnMaxScore)">
+                      <span class="sr-only"></span>
+                    </div>
+                    <div class="progress-bar progress-bar-warning progress-bar-striped active" [style.width]="ProgressBar(2,selMap.mapScore?.scoreOnMaxScore)" >
+                      <span class="sr-only"></span>
+                    </div>
+                    <div class="progress-bar progress-bar-success progress-bar-striped active" [style.width]="ProgressBar(3,selMap.mapScore?.scoreOnMaxScore)" >
+                      <span class="sr-only"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!--% Previsioni corrette-->
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
+                  <label>
+                    {{labelsformapscore?.percOfCorrectPredictionsLbl}}
+                  </label>
+                </div>
+                <div class="text-right col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                  <label>{{selMap.mapScore?.percOfCorrectPredictions}}</label>
+                </div>
+                <div class="col-xs-12 colsm-12 col-md-6 col-lg-3">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-danger progress-bar-striped active" [style.width]="ProgressBar(1,selMap.mapScore?.percOfCorrectPredictions)">
+                      <span class="sr-only"></span>
+                    </div>
+                    <div class="progress-bar progress-bar-warning progress-bar-striped active" [style.width]="ProgressBar(2,selMap.mapScore?.percOfCorrectPredictions)">
+                      <span class="sr-only"></span>
+                    </div>
+                    <div class="progress-bar progress-bar-success progress-bar-striped active" [style.width]="ProgressBar(3,selMap.mapScore?.percOfCorrectPredictions)">
+                      <span class="sr-only"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+
+              <!--Punteggio-->
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
+                  <label>{{labelsformapscore?.totScoreLbl}}</label>
+                </div>
+                <div class="text-right col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                  <label>{{selMap.mapScore?.totScoreString}}</label>
+                </div>
+                <div class="col-xs-12 colsm-12 col-md-6 col-lg-3">
+                </div>
+              </div>
+              <hr />
+
+              <!--Punteggio massimo-->
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
+                  <label>
+                    {{labelsformapscore?.maxScoreLbl}}
+                  </label>
+                </div>
+                <div class="text-right col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                  <label>{{selMap.mapScore?.maxScore}}</label>
+                </div>
+                <div class="col-xs-12 colsm-12 col-md-6 col-lg-3">
+                </div>
+              </div>
+              <hr />
+
+              <!--Num totale previsioni-->
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
+                  <label>
+                    {{labelsformapscore?.totPredictionsLbl}}
+                  </label>
+                </div>
+                <div class="text-right col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                  <label>{{selMap.mapScore?.totPredictions}}</label>
+                </div>
+                <div class="col-xs-12 colsm-12 col-md-6 col-lg-3">
+                </div>
+              </div>
+              <hr />
+              <!--Num totale previsioni corrette-->
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
+                  <label>
+                    {{labelsformapscore?.totCorrectPredictionsLbl}}
+                  </label>
+                </div>
+                <div class="text-right col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                  <label>{{selMap.mapScore?.totCorrectPredictions}}</label>
+                </div>
+                <div class="col-xs-12 colsm-12 col-md-6 col-lg-3">
+                </div>
+              </div>
+              <hr />
+            </div>
+          </div>
+    </div>
+
+    <!-- Sezione ELENCO REGIONI-LOCALITA’ --> 
+
+    <!--I 3 Pulsanti sopra l'elenco delle regioni (con relative località nidificate) -->
+    <div *ngIf="selectedView=='Cities'" class="citiesView">
+      <div class="typeButtons" >
+        <div class="row">
+          <div class="col-xs-12"  style="overflow: auto">
+            <div class="text-center">
+              <div class="btn-group" data-toggle="buttons" style="margin-top: 5px; margin-bottom: 5px">
+                <label (click)="updateLocGroupsByParamType(0)" [className]="ButtonSelected(0)">
+                  <input type="checkbox" autocomplete="off" [value]="groupsParamType==0">
+                  <i class="fa fa-sun-o"></i> Tempo
+                </label>
+                <label (click)="updateLocGroupsByParamType(1)" [className]="ButtonSelected(1)">
+                  <input type="checkbox" autocomplete="off" [value]="groupsParamType==1">
+                  <i class="fa fa fa-thermometer-three-quarters"></i> Temperatura
+                </label>
+                <label (click)="updateLocGroupsByParamType(2)" [className]="ButtonSelected(2)">
+                  <input type="checkbox" autocomplete="off" [value]="groupsParamType==2">
+                  <i class="fa fa-tint"></i> Precipitazioni
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [REGIONS LIST] Inizia l'elenco delle regioni -->
+      <div class="regionList">
+        <table class="table table-striped">
+          <tbody>
+          <!-- group == regione (in elenco regioni) -->
+          <ng-container *ngFor="let group of groupList?.groups">
+           <!-- Pannello espandibile che porta il nome della regione e contiene l'elenco delle località -->           
+            <tr colspan="5">
+              <td colspan="5">
+                <button class="btn btn-sm" (click)="areaCollapse(group)">
+                  <i *ngIf="!group.closed" class="glyphicon glyphicon-collapse-down"></i>
+                  <i *ngIf="group.closed" class="glyphicon glyphicon-collapse-up"></i>
+                </button>
+                <!-- Nome della regione --> 
+                <strong>{{ group?.groupBy }}</strong>
+              </td>
+            </tr>
+            <!-- Se il nodo region (group) è stato espanso ... -->
+            <ng-container *ngIf="!group.closed">
+              <!-- header elenco località ... -->
+              <tr class="CitiesDetailsHeaderRow">
+                <th>
+                  {{labelsforforecasts?.localityNameLbl}}
+                </th>
+                <th>
+                  {{labelsforforecasts?.valueLbl}}
+                </th>
+                <th >
+                  {{labelsforforecasts?.correctValueLbl}}
+                </th>
+                <th >
+                  {{labelsforforecasts?.scoreLbl}}
+                </th>
+              </tr>
+              <!-- elenco delle località della regione  item == località ... -->
+              <tr *ngFor="let item of group?.items">
+                <td class="RegionCityCellValue">
+                  <a (click)="selectCityDetail(item)">{{item?.locName}}</a>
+                </td>
+                <td class="RegionCityCellValue">
+                  {{item?.value}}
+                </td>
+                <td  class="RegionCityCellValue">
+                  {{item?.cVal}}
+                </td>
+                <td class="RegionCityCellValue CityDetailScoreCell" [style.color]="item.txCol" [style.background-color]="item.bgCol" >
+                  {{item?.score}}
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+<!-- 
+  <div id="mapStats" [style.background-color]="MapStatisticsBackgroundColor" [style.color]="MapStatisticsForegroundColor"> 
+    <div id="mapStats">
+      <rect *ngIf="MapStatistics"  [attr.x]="MapStatisticsX" y="3" rx="5" ry="5" [attr.width]="MapStatisticsW" height="90" [attr.fill]="MapStatisticsBackgroundColor"   style="opacity:0.9" />
+      <text *ngIf="MapStatistics" font-family="Verdana" [attr.font-size]="LegendFontSize"  [attr.x]="MapStatisticsX" y="20" [attr.fill]="MapStatisticsForegroundColor" >
+        <tspan text-anchor="middle" [attr.x]="MapStatisticsX+(MapStatisticsW/2)" y="20">{{Lb1}}</tspan>
+        <tspan text-anchor="middle" [attr.font-size]="ValueFontSize" [attr.x]="MapStatisticsX+(MapStatisticsW/2)" y="40" >{{Vl1}}</tspan>
+        <tspan text-anchor="middle" [attr.x]="MapStatisticsX+(MapStatisticsW/2)" y="60">{{Lb2}}</tspan>
+        <tspan text-anchor="middle" [attr.font-size]="ValueFontSize" [attr.x]="MapStatisticsX+(MapStatisticsW/2)" y="80" >{{Vl2}}</tspan>
+      </text> 
+      
+        DA TENERE!!! SONO I PANNELLI COL GIORNO DI SCADENZA IN ALTO A DESTRA DELLA MAPPA  
+        <rect *ngIf="MapCalendar"  [attr.x]="MapCalendarX" y="3" rx="5" ry="5" [attr.width]="MapCalendarW" height="100" style="fill:#337ab7;stroke:gray;stroke-width:1;opacity:0.9" />
+      <text *ngIf="MapCalendar" font-family="Verdana"   [attr.x]="MapCalendarX" y="20" style="fill:black;">
+        <tspan text-anchor="middle" [attr.font-size]="LegendCalendarFontSize1" [attr.x]="MapCalendarX+(MapCalendarW/2)" y="30" style="fill:white;">{{weekday}}</tspan>
+        <tspan text-anchor="middle" [attr.font-size]="LegendCalendarFontSize2" [attr.x]="MapCalendarX+(MapCalendarW/2)" y="70" style="fill:white;">{{dayofmonth}}</tspan>
+        <tspan text-anchor="middle" [attr.font-size]="LegendCalendarFontSize1" [attr.x]="MapCalendarX+(MapCalendarW/2)" y="90" style="fill:white;">{{hour}}</tspan>
+      </text> 
+    </div>
+  </div>
+ -->
+ 

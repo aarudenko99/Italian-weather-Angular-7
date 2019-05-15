@@ -1,0 +1,85 @@
+
+@media(max-width:767px) {
+  .UserNameTitleContainer {
+    background-color: #337ab7 !important;
+    color: white !important;
+    font-size: 12pt;
+    display: block;
+    padding-left: 13px;
+    margin-bottom: -2px;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-top: 50px;
+    height: 38px;
+  }
+
+  .BarMaturityDateTitle {
+    display: block;
+    color: white !important;
+    font-size: 9pt;
+  }
+
+  .TitleContainer {
+    top: 0px;
+    left: -16px;
+    position: fixed;
+    width: 110%;
+    z-index: 10;
+    margin: 0px;
+  }
+
+  .CityMaturityDateTitle {
+    display: block;
+    color: white !important;
+    font-size: 9pt;
+  }
+
+}
+
+@media(min-width:768px) {
+  .UserNameTitleContainer {
+    background-color: #337ab7 !important;
+    color: white !important;
+    font-size: 19pt;
+    display: block;
+    padding-left: 13px;
+    margin-bottom: -2px;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-top: 50px;
+    height: 58px;
+  }
+
+  .BarMaturityDateTitle {
+    display: block;
+    color: white !important;
+    font-size: 12pt;
+    /* float: right; */
+    /* margin-top: 10px; */
+    margin-right: 95px;
+  }
+  .TitleContainer {
+    top: 0px;
+    left: -16px;
+    position: fixed;
+    width: 102%;
+    z-index: 10;
+    margin: 0px;
+  }
+
+  .CityMaturityDateTitle {
+    display: block;
+    color: white !important;
+    font-size: 12pt;
+    /* float: right; */
+    /* margin-top: 10px; */
+    margin-right: 95px;
+  }
+
+}
+
+
+ 
+
+
+

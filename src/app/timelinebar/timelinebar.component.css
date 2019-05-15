@@ -1,0 +1,274 @@
+
+/* 
+@media(max-width:767px) {
+}
+@media(min-width:768px) {
+}
+
+@media(min-width:992px) {
+}
+
+DESKTOP MAXI 
+@media(min-width:1200px) {
+} */
+
+
+
+.TimeLineButton {
+  font-size: 10pt;
+  font-weight: bolder;
+  text-align: center;
+  cursor: pointer;
+}
+
+.TimeLineNormalColor {
+  background-color: #4FC3E1;
+  color: #fff;
+}
+
+.TimeLineEmissionColor {
+  color: #fff !important;
+  background-color: #337ab7;
+  /* border-color: #2e6da4; */
+}
+
+.TimeLineForecastColor {
+  color: #fff !important;
+  background-color: #0C3C65;
+  /* border-color: #2e6da4; */
+}
+
+.TimeLineNowColor {
+  color: #fff !important;
+  background-color: #72BA55;
+  /* border-color: #4cae4c; */
+}
+
+/* .TimeLineButtonBackward {
+  background-color: whitesmoke;
+  color: gray;
+  font-size: 10pt;
+  font-weight: bolder;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.TimeLineButtonForward {
+  background-color: whitesmoke;
+  color: gray;
+  font-size: 10pt;
+  font-weight: bolder;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.TimeLineButtonForwardDisabled {
+  background-color: gray;
+  color: black;
+  font-size: 10pt;
+  font-weight: bolder;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.TimeLineMeterCell {
+  text-align: center;
+  vertical-align: bottom;
+  padding-bottom: 0px;
+  background-color: whitesmoke !important;
+  color: darkred;
+  border-top: 0px;
+  background-size: cover !important;
+  height: 20px;
+} */
+
+
+.NoSubLabel {
+  border: 0px;
+  background-color: white;
+}
+
+.SubLabel {
+  font-size: 10pt;
+  font-weight: bolder;
+  text-align: center;
+  background-color: white;
+  border: none;
+}
+
+.SubTimeLineRow {
+  height: 30px;
+}
+
+
+.EmissionMobileLabel {
+  font-size: 7pt;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+}
+.EmissionMobileLabel2 {
+  font-size: 10pt;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+}
+.EmissionMobileValue {
+  font-size: 10pt;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+}
+.TimeLineMobileEmission {
+  color: #fff !important;
+  background-color: #290b4b;
+  /* background-color: #337ab7; */
+}
+.TimelineMobileButton {
+  border-color: white;
+  width: 10%;
+}
+.TimeLineMobileContainer {
+  /*margin-top: 20px;*/
+  margin-bottom: 0;
+}
+.TimelineMobileForecastDaysContainer {
+  height: 64px;
+  border: 0;
+/*border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  overflow-x: auto;*/
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-bottom: 0;
+}
+
+.TimelineMobileForecastDaysContainer ::-webkit-scrollbar {
+  display: none;
+}
+
+.TimelineDesktopForecastDaysContainer {
+  height: 64px;
+  border: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin-bottom: 0;
+}
+
+.TimelineDesktopForecastDaysContainer ::-webkit-scrollbar {
+  display: none;
+}
+
+
+.MobileDateCell {
+  height: 64px;
+  min-width: 64px !important;
+  max-width: 64px;
+  border-top: none;
+  padding: 8px 0 0;
+  border: 1px solid #48afca;
+}
+
+
+.MobileWeekDayLabel {
+  font-size: 9pt;
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+.MobileDayLabel {
+  font-size: 16pt;
+}
+.MobileDateCell.TimeLineNormalColor:hover .MobileWeekDayLabel,
+.MobileDateCell.TimeLineNormalColor:hover .MobileDayLabel {
+  color: #1991c3;
+}
+
+.CenterTimeline {
+  width: 80%;
+  padding: 0;
+  margin: 0px;
+}
+.ScrollTimeline {
+/*   min-width: 64px !important;
+  max-width: 64px; */
+  background-color: #4FC3E1;
+  text-align: center;
+  vertical-align: middle;
+  height: 64px;
+  margin: 0px;
+  color: #fff;
+  padding: 25px 0px 0px;
+}
+
+
+
+
+
+.timeline {
+  display: grid;
+  height: 64px;
+  grid-template-columns: 75px 45px minmax(128px, auto) 45px;
+  grid-template-rows: 1fr;
+  grid-gap: 0px 0px;
+  grid-template-areas: "emission backbtn forecast forwardbtn";
+}
+
+.timeline .lt_emission { grid-area: emission; }
+.timeline .lt_emission {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  display:table;
+  height: 100%;
+  background-color: #1991c3;
+}
+.timeline .lt_emission > div {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.timeline .lt_back { grid-area: backbtn; }
+
+.timeline .lt_forecast { grid-area: forecast; }
+
+.timeline .lt_forward { grid-area: forwardbtn; }
+
+@media all and (-ms-high-contrast: none) {
+  .timeline {
+      display: -ms-grid;
+      -ms-grid-columns: 100px 64px auto 64px;
+      -ms-grid-rows: 1fr;
+  }
+
+  .timeline .lt_back {
+      -ms-grid-row: 1;
+      -ms-grid-row-span: 1;
+      -ms-grid-column: 2;
+      -ms-grid-column-span: 1;
+  }
+
+  .timeline .lt_forecast {
+      -ms-grid-row: 1;
+      -ms-grid-row-span: 1;
+      -ms-grid-column: 3;
+      -ms-grid-column-span: 1;
+  }
+
+  .timeline .lt_forward {
+      -ms-grid-row: 1;
+      -ms-grid-row-span: 1;
+      -ms-grid-column: 4;
+      -ms-grid-column-span: 1;
+  }
+}
+
+.timeline-calendar{
+position: absolute;
+top: 64px;
+left: 0;
+z-index: 9999;
+
+}
