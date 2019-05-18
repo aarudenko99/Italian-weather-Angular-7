@@ -43,7 +43,7 @@ export class UserFavoriteComponent implements OnInit {
   private _GP: GlobalParameters;
   @Input('globalParameters')
   set globalParameters(value: GlobalParameters) {
-    console.log("123", value);
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", value);
     if (value) {
       this._GP = value;
       if (this._service) {

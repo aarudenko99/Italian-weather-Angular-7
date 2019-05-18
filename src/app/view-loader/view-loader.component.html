@@ -23,7 +23,6 @@
   </header>
 
   <section id="page-ranking" [ngClass]="{'embedded': ViewMode.View === 'rank'}"> 
-    
       <rankinglist
         *ngIf = "ViewMode.View === 'rank'"
         [eventchanger]="eventchanger"
@@ -36,14 +35,6 @@
   </section> 
 
   <section id="page-favorite" [ngClass]="{'embedded': ViewMode.View === 'favorite'}"> 
-    
-    <app-timelinebar 
-      *ngIf = "showMaps()"
-      [eventchanger]="eventchanger"
-      [forecastIssueDate]="data.globalParameters?.forecastIssueDate"
-      [forecastDeadLineDate]="data.globalParameters?.forecastDeadLineDate"
-      [forwardDays]="data.timeLineBars?.forwardDays">
-    </app-timelinebar> 
 
       <app-user-favorite *ngIf = "ViewMode.View === 'favorite'" [eventchanger]="eventchanger" 
       [globalParameters] = "data.globalParameters"></app-user-favorite>

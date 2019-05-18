@@ -46,7 +46,9 @@
 	top: auto;
 	z-index: 1;
 }
-
+.ioslist-wrapper:nth-child(2){
+	display: none;
+}
 /* Demo Styling */
 .ioslist ul, .ioslist dl {
     list-style: none;

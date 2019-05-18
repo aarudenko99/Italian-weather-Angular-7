@@ -23,9 +23,10 @@ export class MainmenuComponent implements OnInit {
   _EVC: EventChanger;
   @Input('eventchanger')
   set setEventChanger(value: EventChanger) { 
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", value);
     if (value) {
       this._EVC = value;
-      if (this._service) {
+      if (this._service && value.localities) {
         this._service.buildLocalitiesArray(value.localities);
       }
     }
